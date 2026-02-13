@@ -1,0 +1,156 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      UserRole
+  firstName String
+  lastName  String
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  teacher Teacher?
+  student Student?
+
+  @@map("users")
+}
+
+model Teacher {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  phone       String?
+  position    String
+  department  String
+  degree      String?
+  bio         String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  subjects Subject[]
+
+  @@map("teachers")
+}
+
+model Student {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  studentCode  String   @unique
+  course       Int
+  group        String
+  phone        String?
+  gender       Gender
+  birthDate    DateTime?
+  address      String?
+  enrollYear   Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  studyPlan   StudyPlan? @relation(fields: [studyPlanId], references: [id])
+  studyPlanId String?
+  grades      Grade[]
+
+  @@map("students")
+}
+
+model Subject {
+  id          String   @id @default(uuid())
+  name        String
+  code        String   @unique
+  credits     Int
+  hours       Int
+  semester    Int
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  teacher   Teacher? @relation(fields: [teacherId], references: [id], onDelete: SetNull)
+  teacherId String?
+
+  grades      Grade[]
+  studyPlans  StudyPlan[] @relation("StudyPlanSubjects")
+
+  @@map("subjects")
+}
+
+model Grade {
+  id        String   @id @default(uuid())
+  value     Float
+  date      DateTime @default(now())
+  comment   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId String
+
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  subjectId String
+
+  @@map("grades")
+}
+
+model StudyPlan {
+  id          String   @id @default(uuid())
+  name        String
+  year        Int
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  students Student[]
+  subjects Subject[] @relation("StudyPlanSubjects")
+
+  @@map("study_plans")
+}
+
+model News {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  image       String?
+  published   Boolean  @default(false)
+  publishDate DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("news")
+}
+
+model Graduate {
+  id          String   @id @default(uuid())
+  firstName   String
+  lastName    String
+  photo       String?
+  graduateYear Int
+  currentJob  String?
+  company     String?
+  achievement String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("graduates")
+}
