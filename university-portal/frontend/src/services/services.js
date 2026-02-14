@@ -30,213 +30,213 @@ export const authService = {
   },
 
   getMe: async () => {
-    const response = await api.get("/auth/me");
+    const response = await api.get("/api/auth/me");
     return response.data;
   },
 };
 
 export const studentService = {
   getAll: async () => {
-    const response = await api.get("/students");
+    const response = await api.get("/api/students");
     return response.data;
   },
 
   getById: async (id) => {
-    const response = await api.get(`/students/${id}`);
+    const response = await api.get(`/api/students/${id}`);
     return response.data;
   },
 
   getTop: async () => {
-    const response = await api.get("/students/top");
+    const response = await api.get("/api/students/top");
     return response.data;
   },
 
   create: async (data) => {
-    const response = await api.post("/students", data);
+    const response = await api.post("/api/students", data);
     return response.data;
   },
 
   update: async (id, data) => {
-    const response = await api.put(`/students/${id}`, data);
+    const response = await api.put(`/api/students/${id}`, data);
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await api.delete(`/students/${id}`);
+    const response = await api.delete(`/api/students/${id}`);
     return response.data;
   },
 };
 
 export const teacherService = {
   getAll: async () => {
-    const response = await api.get("/teachers");
+    const response = await api.get("/api/teachers");
     return response.data;
   },
 
   getById: async (id) => {
-    const response = await api.get(`/teachers/${id}`);
+    const response = await api.get(`/api/teachers/${id}`);
     return response.data;
   },
 
   create: async (data) => {
-    const response = await api.post("/teachers", data);
+    const response = await api.post("/api/teachers", data);
     return response.data;
   },
 
   update: async (id, data) => {
-    const response = await api.put(`/teachers/${id}`, data);
+    const response = await api.put(`/api/teachers/${id}`, data);
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await api.delete(`/teachers/${id}`);
+    const response = await api.delete(`/api/teachers/${id}`);
     return response.data;
   },
 };
 
 export const subjectService = {
   getAll: async () => {
-    const response = await api.get("/subjects");
+    const response = await api.get("/api/subjects");
     return response.data;
   },
 
   getById: async (id) => {
-    const response = await api.get(`/subjects/${id}`);
+    const response = await api.get(`/api/subjects/${id}`);
     return response.data;
   },
 
   create: async (data) => {
-    const response = await api.post("/subjects", data);
+    const response = await api.post("/api/subjects", data);
     return response.data;
   },
 
   update: async (id, data) => {
-    const response = await api.put(`/subjects/${id}`, data);
+    const response = await api.put(`/api/subjects/${id}`, data);
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await api.delete(`/subjects/${id}`);
+    const response = await api.delete(`/api/subjects/${id}`);
     return response.data;
   },
 };
 
 export const gradeService = {
   getAll: async () => {
-    const response = await api.get("/grades");
+    const response = await api.get("/api/grades");
     return response.data;
   },
 
   getByStudent: async (studentId) => {
-    const response = await api.get(`/grades/student/${studentId}`);
+    const response = await api.get(`/api/grades/student/${studentId}`);
     return response.data;
   },
 
   create: async (data) => {
-    const response = await api.post("/grades", data);
+    const response = await api.post("/api/grades", data);
     return response.data;
   },
 
   update: async (id, data) => {
-    const response = await api.put(`/grades/${id}`, data);
+    const response = await api.put(`/api/grades/${id}`, data);
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await api.delete(`/grades/${id}`);
+    const response = await api.delete(`/api/grades/${id}`);
     return response.data;
   },
 };
 
 export const studyPlanService = {
   getAll: async () => {
-    const response = await api.get("/study-plans");
+    const response = await api.get("/api/study-plans");
     return response.data;
   },
 
   getById: async (id) => {
-    const response = await api.get(`/study-plans/${id}`);
+    const response = await api.get(`/api/study-plans/${id}`);
     return response.data;
   },
 
   create: async (data) => {
-    const response = await api.post("/study-plans", data);
+    const response = await api.post("/api/study-plans", data);
     return response.data;
   },
 
   update: async (id, data) => {
-    const response = await api.put(`/study-plans/${id}`, data);
+    const response = await api.put(`/api/study-plans/${id}`, data);
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await api.delete(`/study-plans/${id}`);
+    const response = await api.delete(`/api/study-plans/${id}`);
     return response.data;
   },
 };
 
 export const newsService = {
   getAll: async () => {
-    const response = await api.get("/news");
+    const response = await api.get("/api/news");
     return response.data;
   },
 
   getAllAdmin: async () => {
-    const response = await api.get("/news/all");
+    const response = await api.get("/api/news/all");
     return response.data;
   },
 
   getById: async (id) => {
-    const response = await api.get(`/news/${id}`);
+    const response = await api.get(`/api/news/${id}`);
     return response.data;
   },
 
   create: async (data) => {
-    const response = await api.post("/news", data);
+    const response = await api.post("/api/news", data);
     return response.data;
   },
 
   update: async (id, data) => {
-    const response = await api.put(`/news/${id}`, data);
+    const response = await api.put(`/api/news/${id}`, data);
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await api.delete(`/news/${id}`);
+    const response = await api.delete(`/api/news/${id}`);
     return response.data;
   },
 };
 
 export const graduateService = {
   getAll: async () => {
-    const response = await api.get("/graduates");
+    const response = await api.get("/api/graduates");
     return response.data;
   },
 
   getById: async (id) => {
-    const response = await api.get(`/graduates/${id}`);
+    const response = await api.get(`/api/graduates/${id}`);
     return response.data;
   },
 
   create: async (data) => {
-    const response = await api.post("/graduates", data);
+    const response = await api.post("/api/graduates", data);
     return response.data;
   },
 
   update: async (id, data) => {
-    const response = await api.put(`/graduates/${id}`, data);
+    const response = await api.put(`/api/graduates/${id}`, data);
     return response.data;
   },
 
   delete: async (id) => {
-    const response = await api.delete(`/graduates/${id}`);
+    const response = await api.delete(`/api/graduates/${id}`);
     return response.data;
   },
 };
 
 export const statsService = {
   get: async () => {
-    const response = await api.get("/stats");
+    const response = await api.get("/api/stats");
     return response.data;
   },
 };
